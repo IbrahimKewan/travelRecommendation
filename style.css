@@ -359,5 +359,7 @@ nav li:hover ,a:hover{
   }
 }
 
-
+.hide{
+    display: none;
+}
 

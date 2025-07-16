@@ -24,13 +24,14 @@ function loadSection(name) {
 const searchBtn = document.getElementById('searchBtn');
 
 searchBtn.addEventListener('click', () => {
+    
 fetch('travel_recommendation_api.json')
   .then(response => response.json())
   .then(data => {
     console.log("Alle Daten:", data);
 
     const output = document.getElementById('output');
-
+    output.classList.remove('hide');
     // if (data.countries.name === 'Australia'){
 
     // }
@@ -78,5 +79,6 @@ fetch('travel_recommendation_api.json')
 
 const clearBtn = document.getElementById('clearBtn');
 clearBtn.addEventListener('click', () =>{
-
+    const output = document.getElementById('output');
+    output.classList.add('hide');
 });

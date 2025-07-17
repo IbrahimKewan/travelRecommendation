@@ -81,7 +81,7 @@ nav li:hover ,a:hover{
   border: none;
 }
 
-.input-icon i {
+.input-icon a {
   position: absolute;
   right: 10px;
   color: #888;

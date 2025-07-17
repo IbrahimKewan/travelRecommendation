@@ -51,40 +51,90 @@ function getSearingData() {
         .then((res) => res.json())
         .then((data) => {
             let found = false;
+            const outputCountry = document.getElementById("outputCountry");
+            if (outputCountry) {
+                outputCountry.innerHTML = "";
+                outputCountry.classList.remove("hide");
+            } else {
+                console.error("Element 'outputCountry' not found in the DOM.");
+            }
+
             data.countries.forEach((country) => {
                 if (
-                    country.name.toLowerCase() == searchInputValue.toLowerCase()
+                    country.name.toLowerCase() ===
+                    searchInputValue.toLowerCase()
                 ) {
                     found = true;
-                    const outputCountry =
-                        document.getElementById("outputCountry");
-                    if (outputCountry) {
-                        outputCountry.innerHTML = "";
-                        outputCountry.classList.remove("hide");
-                        country.cities.forEach((city) => {
-                            console.log(city.name);
+                    const countryHeader = document.createElement("h2");
+                    countryHeader.textContent = country.name;
+                    outputCountry.appendChild(countryHeader);
 
-                            const card = document.createElement("div");
-                            card.classList.add("destination-card");
-                            card.innerHTML = `
-                <h3>${city.name}</h3>
-                <img src="${city.imageUrl}" alt="${city.name}" />
-                <p>${city.description}</p>
-            `;
-                            outputCountry.appendChild(card);
-                        });
-                    }
-                }
+                    const cityContainer = document.createElement("div");
+                    cityContainer.classList.add("city-container");
 
-                if (!found) {
-                    const outputCountry =
-                        document.getElementById("outputCountry");
-                    if (outputCountry) {
-                        outputCountry.innerHTML = `<p style="color: red;">Land nicht gefunden. Bitte versuchen Sie es erneut.</p>`;
-                        outputCountry.classList.remove("hide");
-                    }
+                    country.cities.forEach((city) => {
+                        const cityCard = createCityCard(city);
+                        cityContainer.appendChild(cityCard);
+                    });
+                    outputCountry.appendChild(cityContainer);
                 }
             });
+
+            data.temples.forEach((temple) => {
+                const array = temple.name.split(",");
+
+                const templeHeader = document.createElement("h2");
+                if (
+                    searchInputValue.toLowerCase() === "tempel" ||
+                    temple.name
+                        .toLowerCase()
+                        .includes(searchInputValue.toLowerCase())
+                ) {
+                    array.forEach((name) => {
+                        found = true;
+                        templeHeader.textContent = temple.name;
+                        outputCountry.appendChild(templeHeader);
+                    });
+
+                    const templeCard = createCityCard(temple);
+                    outputCountry.appendChild(templeCard);
+                }
+            });
+
+            data.beaches.forEach((beach) => {
+                if (
+                    searchInputValue.toLowerCase() === "beach" ||
+                    beach.name
+                        .toLowerCase()
+                        .includes(searchInputValue.toLowerCase())
+                ) {
+                    found = true;
+                    const beachHeader = document.createElement("h2");
+                    beachHeader.textContent = beach.name;
+                    outputCountry.appendChild(beachHeader);
+                    const beachCard = createCityCard(beach);
+                    outputCountry.appendChild(beachCard);
+                }
+            });
+
+            function createCityCard(city) {
+                const card = document.createElement("div");
+                card.classList.add("destination-card");
+                card.innerHTML = `
+                    <h3>${city.name}</h3>
+                    <img src="${city.imageUrl}" alt="${city.name}" />
+                    <p>${city.description}</p>
+                `;
+                return card;
+            }
+
+            if (!found) {
+                const outputCountry = document.getElementById("outputCountry");
+                if (outputCountry) {
+                    outputCountry.innerHTML = `<p style="color: red;">Land oder Tempel nicht gefunden. Bitte versuchen Sie es erneut.</p>`;
+                    outputCountry.classList.remove("hide");
+                }
+            }
         })
         .catch((err) => {
             console.error("Fehler beim Abrufen der Daten:", err);

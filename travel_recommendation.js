@@ -58,65 +58,66 @@ function getSearingData() {
             } else {
                 console.error("Element 'outputCountry' not found in the DOM.");
             }
-
-            data.countries.forEach((country) => {
-                if (
-                    country.name.toLowerCase() ===
-                        searchInputValue.toLowerCase() ||
-                    searchInputValue.toLowerCase() === "city"
-                ) {
-                    found = true;
-                    const countryHeader = document.createElement("h2");
-                    countryHeader.textContent = country.name;
-                    outputCountry.appendChild(countryHeader);
-
-                    const cityContainer = document.createElement("div");
-                    cityContainer.classList.add("city-container");
-
-                    country.cities.forEach((city) => {
-                        const cityCard = createCityCard(city);
-                        cityContainer.appendChild(cityCard);
-                    });
-                    outputCountry.appendChild(cityContainer);
-                }
-            });
-
-            data.temples.forEach((temple) => {
-                const array = temple.name.split(",");
-
-                const templeHeader = document.createElement("h2");
-                if (
-                    searchInputValue.toLowerCase() === "tempel" ||
-                    temple.name
-                        .toLowerCase()
-                        .includes(searchInputValue.toLowerCase())
-                ) {
-                    array.forEach((name) => {
+            if (searchInputValue.trim() !== "") {
+                data.countries.forEach((country) => {
+                    if (
+                        country.name.toLowerCase() ===
+                            searchInputValue.toLowerCase() ||
+                        searchInputValue.toLowerCase() === "city"
+                    ) {
                         found = true;
-                        templeHeader.textContent = temple.name;
-                        outputCountry.appendChild(templeHeader);
-                    });
+                        const countryHeader = document.createElement("h2");
+                        countryHeader.textContent = country.name;
+                        outputCountry.appendChild(countryHeader);
 
-                    const templeCard = createCityCard(temple);
-                    outputCountry.appendChild(templeCard);
-                }
-            });
+                        const cityContainer = document.createElement("div");
+                        cityContainer.classList.add("city-container");
 
-            data.beaches.forEach((beach) => {
-                if (
-                    searchInputValue.toLowerCase() === "beach" ||
-                    beach.name
-                        .toLowerCase()
-                        .includes(searchInputValue.toLowerCase())
-                ) {
-                    found = true;
-                    const beachHeader = document.createElement("h2");
-                    beachHeader.textContent = beach.name;
-                    outputCountry.appendChild(beachHeader);
-                    const beachCard = createCityCard(beach);
-                    outputCountry.appendChild(beachCard);
-                }
-            });
+                        country.cities.forEach((city) => {
+                            const cityCard = createCityCard(city);
+                            cityContainer.appendChild(cityCard);
+                        });
+                        outputCountry.appendChild(cityContainer);
+                    }
+                });
+
+                data.temples.forEach((temple) => {
+                    const array = temple.name.split(",");
+                    const templeHeader = document.createElement("h2");
+
+                    if (
+                        searchInputValue.toLowerCase() === "tempel" ||
+                        temple.name
+                            .toLowerCase()
+                            .includes(searchInputValue.toLowerCase())
+                    ) {
+                        array.forEach((name) => {
+                            found = true;
+                            templeHeader.textContent = temple.name;
+                            outputCountry.appendChild(templeHeader);
+                        });
+
+                        const templeCard = createCityCard(temple);
+                        outputCountry.appendChild(templeCard);
+                    }
+                });
+
+                data.beaches.forEach((beach) => {
+                    if (
+                        searchInputValue.toLowerCase() === "beach" ||
+                        beach.name
+                            .toLowerCase()
+                            .includes(searchInputValue.toLowerCase())
+                    ) {
+                        found = true;
+                        const beachHeader = document.createElement("h2");
+                        beachHeader.textContent = beach.name;
+                        outputCountry.appendChild(beachHeader);
+                        const beachCard = createCityCard(beach);
+                        outputCountry.appendChild(beachCard);
+                    }
+                });
+            }
 
             function createCityCard(city) {
                 const card = document.createElement("div");

@@ -147,6 +147,13 @@ if (searchBtn) {
 if (searchIcon) {
     searchIcon.addEventListener("click", getSearingData);
 }
+if (searchInput) {
+    searchInput.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+            getSearingData();
+        }
+    });
+}
 
 const clearBtn = document.getElementById("clearBtn");
 if (clearBtn) {

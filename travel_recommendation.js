@@ -50,10 +50,12 @@ function getSearingData() {
     fetch("travel_recommendation_api.json")
         .then((res) => res.json())
         .then((data) => {
+            let found = false;
             data.countries.forEach((country) => {
                 if (
                     country.name.toLowerCase() == searchInputValue.toLowerCase()
                 ) {
+                    found = true;
                     const outputCountry =
                         document.getElementById("outputCountry");
                     if (outputCountry) {
@@ -71,6 +73,15 @@ function getSearingData() {
             `;
                             outputCountry.appendChild(card);
                         });
+                    }
+                }
+
+                if (!found) {
+                    const outputCountry =
+                        document.getElementById("outputCountry");
+                    if (outputCountry) {
+                        outputCountry.innerHTML = `<p style="color: red;">Land nicht gefunden. Bitte versuchen Sie es erneut.</p>`;
+                        outputCountry.classList.remove("hide");
                     }
                 }
             });

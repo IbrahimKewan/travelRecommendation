@@ -6,12 +6,12 @@
             "cities": [
                 {
                     "name": "Sydney, Australia",
-                    "imageUrl": "./pictures/Australia.jpg",
+                    "imageUrl": "./pictures/01_australien.jpg",
                     "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge."
                 },
                 {
                     "name": "Melbourne, Australia",
-                    "imageUrl": "enter_your_image_for_melbourne.jpg",
+                    "imageUrl": "./pictures/02_australien.jpg",
                     "description": "A cultural hub famous for its art, food, and diverse neighborhoods."
                 }
             ]
@@ -38,12 +38,12 @@
             "cities": [
                 {
                     "name": "Rio de Janeiro, Brazil",
-                    "imageUrl": "enter_your_image_for_rio.jpg",
+                    "imageUrl": "./pictures/01_brazil.jpg",
                     "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
                 },
                 {
                     "name": "São Paulo, Brazil",
-                    "imageUrl": "enter_your_image_for_sao-paulo.jpg",
+                    "imageUrl": "./pictures/02_brazil.jpg",
                     "description": "The financial hub with diverse culture, arts, and a vibrant nightlife."
                 }
             ]

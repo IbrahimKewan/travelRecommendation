@@ -63,7 +63,7 @@ function getSearingData() {
                 if (
                     country.name.toLowerCase() ===
                         searchInputValue.toLowerCase() ||
-                    country.name.toLowerCase() === "city"
+                    searchInputValue.toLowerCase() === "city"
                 ) {
                     found = true;
                     const countryHeader = document.createElement("h2");

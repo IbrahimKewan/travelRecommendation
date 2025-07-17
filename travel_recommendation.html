@@ -1,63 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibrahim Kewan</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ibrahim Kewan</title>
 
-    <!-------------------------------- Font Awesome Icons -------------------------------->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <!-------------------------------- Font Awesome Icons -------------------------------->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-------------------------------- CSS ----------------------------------------------->
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<body>
-    <!-----------------------------------
-                    Header 
-    ------------------------------------>
-    <header>
-        <div class="logo">
-            <i class="fa-solid fa-plane-up"></i>
-            <span><i>TravelBloom</i></span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="loadSection('home')">Home</a></li>
-                <li><a href="#" onclick="loadSection('about_us')">About Us</a></li>
-                <li><a href="#" onclick="loadSection('contact')">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="search-box">
-            <div class="input-icon">
-                <input type="text" placeholder="Enter a destination or keyword" id="searchInput" />
-                <a id="searchIcon"><i class="fas fa-search"></i></a>
+        <!-------------------------------- CSS ----------------------------------------------->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-----------------------------------
+                Header 
+        ------------------------------------>
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-plane-up"></i>
+                <span><i>TravelBloom</i></span>
             </div>
-            <button class="searchBtn" id="searchBtn">Search</button>
-            <button class="clearBtn" id="clearBtn">Clear</button>
-        </div>
-    </header>
-    
-    <!-----------------------------------
-                    MAIN 
-    ------------------------------------>
-    <section class="hero">
-        <div class="overlay" id="main-content"></div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="loadSection('home')">Home</a></li>
+                    <li>
+                        <a href="#" onclick="loadSection('about_us')"
+                            >About Us</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadSection('contact')">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <div class="input-icon">
+                    <input
+                        type="text"
+                        placeholder="Enter a destination or keyword"
+                        id="searchInput" />
+                    <a id="searchIcon"><i class="fas fa-search"></i></a>
+                </div>
+                <button class="searchBtn" id="searchBtn">Search</button>
+                <button class="clearBtn" id="clearBtn">Clear</button>
+            </div>
+        </header>
+
+        <!-----------------------------------
+                MAIN 
+        ------------------------------------>
+        <section class="hero">
+            <div id="outputCountry"></div>
+            <!-- <div class="main-display"> -->
+            <div class="overlay" id="main-content"></div>
+
             <div id="output"></div>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-    </section>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <!-- </div> -->
+        </section>
 
-    <!-----------------------------------
-                    Footer
-    ------------------------------------>
-    <footer>
-
-    </footer>
-    <script src="travel_recommendation.js"></script>
-</body>
+        <!-----------------------------------
+                Footer
+        ------------------------------------>
+        <footer></footer>
+        <script src="travel_recommendation.js"></script>
+    </body>
 </html>

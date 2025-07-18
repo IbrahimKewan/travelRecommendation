@@ -13,6 +13,17 @@ function loadSection(htmlName) {
     fetch(`sections/${htmlName}.html`)
         .then((res) => {
             if (!res.ok) throw new Error("datei nicht gefunden");
+            const HeroBackground = document.getElementById("HeroBackground");
+            if (htmlName === "home") {
+                HeroBackground.className = "hero";
+            } else if (htmlName === "contact") {
+                HeroBackground.className = "hero2";
+            } else if (htmlName === "about_us") {
+                HeroBackground.className = "hero3";
+            } else {
+                HeroBackground.className = "";
+            }
+
             return res.text();
         })
         .then((html) => {
